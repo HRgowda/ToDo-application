@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <CreateTodo />
-      <Todo todos={todos} setTodos={todos} onUpdate={fetchTodos} />
+      <Todo todos={todos} />
     </div>
   );
 }
