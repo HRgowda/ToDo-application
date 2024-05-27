@@ -1,30 +1,23 @@
-export function Todo({ todos, setTodos, onUpdate }) {
-  // Function to handle marking a todo as complete
-  const toggleTodo = async (id) => {
-    try {
-      const response = await fetch('http://localhost:5000/completed', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id })
-      });
-      const updatedTodo = await response.json();
-      setTodos(todos.map(todo => todo._id === id ? { ...todo, completed: true } : todo));
-    } catch (error) {
-      console.error('Error toggling todo:', error);
-    }
-  };
-
+export function Todo({ todos }) {
+ 
   return (
     <div>
       {todos.map((todo) => (
         <div key={todo._id}>
           <h1>{todo.title}</h1>
           <h2>{todo.description}</h2>
-          <button onClick={() => toggleTodo(todo._id)}>
-            {todo.completed ? "Completed" : "Mark as complete"}
-          </button>
+          <button onClick={() => {
+            fetch("http://localhost:3000/completed", {
+              method: "PUT",
+              body: JSON.stringify({ id: todo._id}),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }).then(async (res) => {
+              //  await res.json();
+              // No need to await the response if you're not using it
+            })
+            }}>{todo.completed == true ? "Completed" : "Mark as Done"}</button>
         </div>
       ))}
     </div>
