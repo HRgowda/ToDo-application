@@ -1,23 +1,29 @@
-// In main branch
-
 import { useState } from "react"
 
 export function CreateTodo(){
   //local state variables
-  const [title, setTitle] = useState(""
-  );
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  return <div>
+  return <div> 
+    <div style={{display:"flex", justifyContent:"center"}}>
 
-    <input style={{padding:10, margin:10}} type="text" placeholder="Title" onChange={function(e){
-      const value = e.target.value;
-      setTitle(e.target.value)
+    <input style={{padding:10, margin:10, width:175}} type="text" placeholder="Enter the Title of Todo" onChange={function(currentValue){
+      const value = currentValue.target.value;
+      setTitle(currentValue.target.value)
     }} /> <br /> <br /> 
 
-    <input style={{padding:10, margin:10}} type="text" placeholder="Description" onChange={function(e){
-      const value = e.target.value;
-      setDescription(e.target.value)
-    }}/> <br /> <br />
+    </div>
+    
+    <div style={{display:"flex", justifyContent:"center"}}>
+
+      <input style={{padding:10, margin:10, width:175}} type="text" placeholder="Enter the Description of Todo" onChange={function(currentValue){
+        const value = currentValue.target.value;
+        setDescription(currentValue.target.value)
+      }}/> <br /> <br />
+
+    </div>
+
+    <div style={{display:"flex", justifyContent:"center"}}>
 
     <button style={{padding:10, margin:10}} onClick={()=>{
       fetch("http://localhost:3000/yourTodo",{
@@ -33,8 +39,9 @@ export function CreateTodo(){
          await res.json();
         alert("ToDo added..")
         })
-      }}
-    >Add ToDo</button>
+      }}>Add ToDo</button>
 
+    </div>  
   </div>
+  
 }
