@@ -2,7 +2,8 @@ import { useState } from "react"
 
 export function CreateTodo(){
   //local state variables
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(""
+  );
   const [description, setDescription] = useState("");
   return <div>
 
