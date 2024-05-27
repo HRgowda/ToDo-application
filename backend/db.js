@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { boolean } = require("zod");
 
-mongoose.connect("mongodb+srv://hg510443:geMcr6JshjPIkeKf@hrg18.wyad9wl.mongodb.net/todos");
+mongoose.connect("your_mongodb url");
 
 const postSchema = new mongoose.Schema({
   title:String,

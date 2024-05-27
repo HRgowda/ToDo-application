@@ -1,7 +1,7 @@
 export function Todo({ todos }) {
  
   return (
-    <div>
+    <div style={{display:"flex", justifyContent:"center"}}>
       {todos.map((todo) => (
         <div key={todo._id}>
           <h1>{todo.title}</h1>
