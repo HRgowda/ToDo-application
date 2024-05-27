@@ -42,15 +42,15 @@ app.get("/displayTodo", async (req, res)=>{
 })
 
 app.put("/completed", async (req, res)=>{
-  const {id} = req.params;
-  const validate = updateTodo.safeParse(req.params);
+  const id = req.body;
+  const validate = updateTodo.safeParse(id);
   if(!validate.success){
     return res.status(411).json({
       message:"You sent a wrong id"
     });
   }
   await todo.updateOne({
-    id
+    _id:req.body.id
   }, {
     completed:true
   })

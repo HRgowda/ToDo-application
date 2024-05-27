@@ -22,6 +22,7 @@ function App() {
 
   return (
     <div>
+      <h1 style={{display:'flex', justifyContent:'center'}}>Welcome to ToDo application</h1>
       <CreateTodo />
       <Todo todos={todos} />
     </div>
